@@ -23,8 +23,20 @@ export default {
 		// });
 	},
 	methods: {
-		doThings() {
-			console.log("App.vue does things");
+		getEventList() {
+
+			let url= this.store.apiUrl + this.store.apiEventEndPoint;
+
+			axios.get(url).then(risultato =>{
+				if(risultato.status === 200 && risultato.data.success){
+					this.store.eventList = risultato.data.payload;
+				}else{
+					console.error("Ops... qualcosa è andato storto");
+
+				}
+
+			})
+			
 		}
 	}
 }
