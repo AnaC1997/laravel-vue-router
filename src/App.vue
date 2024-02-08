@@ -1,6 +1,8 @@
 <script>
 import AppComponent from "./components/AppComponent.vue"
 
+
+
 import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
 
@@ -43,8 +45,11 @@ export default {
 </script>
 
 <template>
+
+	
 	<main>
 		<AppComponent />
+
 
 		<button class="btn btn-primary">
 			<font-awesome-icon icon="fa-solid fa-home" class="me-1" />
@@ -67,3 +72,4 @@ main {
 	padding: 1rem;
 }
 </style>
+
