@@ -15,6 +15,11 @@ export default {
                     routeName: "about",
                     label: "Chi siamo"
                 },
+
+                {
+                    routeName: "typeService",
+                    label: "I nostri servici"
+                },
                 
             ]
         }
@@ -34,8 +39,8 @@ export default {
 <template>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img
+            <div class="container">
+                <a class="navbar-brand" href="#"><img class="w-50"
                         src="https://us.123rf.com/450wm/javiart/javiart1706/javiart170600099/80321886-disegno-vettoriale-di-eventi.jpg?ver=6"
                         alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

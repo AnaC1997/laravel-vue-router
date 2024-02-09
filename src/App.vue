@@ -1,12 +1,15 @@
 <script>
+
 import AppHeader from "./components/AppHeader.vue"
-import axios from 'axios'; //importo Axios
+import axios from 'axios' //importo Axios
 import { store } from "./store.js" //state management
+
 
 
 export default {
 	components: {
-		AppHeader
+		AppHeader,
+
 	},
 	data() {
 		return {
@@ -14,7 +17,9 @@ export default {
 		}
 	},
 	mounted() {
-		this.doThings();
+		this.getEventList();
+
+		//this.doThings();
 
 		// axios.get("indirizzo").then(risultato => {
 		// 	console.log(risultato);
@@ -24,34 +29,67 @@ export default {
 	},
 	methods: {
 		getEventList() {
-
-			let url= this.store.apiUrl + this.store.apiEventEndPoint;
-
-			axios.get(url).then(risultato =>{
-				if(risultato.status === 200 && risultato.data.success){
-					this.store.eventList = risultato.data.payload;
-				}else{
-					console.error("Ops... qualcosa è andato storto");
-
+			axios.get(this.store.apiUrl + this.store.apiEvent).then(risultato => {
+				console.log(risultato.data);
+				if (risultato.data.success) {
+					this.store.events = risultato.data.payload;
 				}
+			}).catch(errore => {
+				console.error(errore);
+			});
+		},
 
+		getEventId() {
+
+			axios.get(`${this.store.apiUrl}/api/events/${this.$route.params.id}`).then((response) => {
+				console.log(risultato.data);
+				if (response.data.success) {
+					this.store.events = response.data.payload.id;
+				} else {
+					this.$router.push({ name: "not-found" })
+				}
 			})
-			
 		}
 	}
 }
+
+
+//Prova 1
+/*axios.get(this.store.apiUrl + this.store.events/${id}).then(risultato => {
+	console.log(risultato.data.id);
+	if (risultato.data.success) {
+		this.store.events = risultato.data.payload.id;
+	}
+}).catch(errore => {
+	console.error(errore);
+});*/
+
+
+//Prova 2
+/*axios.get(`${this.store.apiUrl}/events/${id}`)
+	.then(risultato => {
+		console.log(risultato.data.id);
+		if (risultato.data.success) {
+			// Aggiungi i dati dell'evento alla variabile this.store.events
+			this.store.events.push(risultato.data.payload);
+		}
+	})
+	.catch(errore => {
+		console.error(errore);
+	});*/
 </script>
 
 <template>
-
-	
 	<main>
 		<AppHeader />
 
+		<ul>
+
+		</ul>
 		<main>
 			<router-view></router-view>
 		</main>
-		
+
 	</main>
 </template>
 

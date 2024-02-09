@@ -1,7 +1,8 @@
 import { reactive } from 'vue'
 
 export const store = reactive({
-    apiUrl: "http://127.0.0.1:8000/api", //url generica dell'api 
-    apiEventEndPoint: "events",
-    eventList: []
+    apiUrl: "http://127.0.0.1:8000/api/",
+    apiEvent: "events",
+    
+    events: [],
 });
