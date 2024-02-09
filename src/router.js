@@ -18,7 +18,7 @@ const router = createRouter({
             name: 'about',
             component: AboutUs
         },
-        {
+        {  // I dati saranno disponibili nel componente come: $route.params.id
             path: '/services',
             name: 'typeService',
             component: CategoryService
@@ -27,7 +27,8 @@ const router = createRouter({
         {
             path: '/event/:id',
             name: 'event-detail',
-            component: EventDetail
+            component: EventDetail,
+            props: true //I dati saranno disponibili come: id Necessita di una props["id"] nel componente
         }
     ]
 });

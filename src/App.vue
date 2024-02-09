@@ -38,45 +38,10 @@ export default {
 				console.error(errore);
 			});
 		},
-
-		getEventId() {
-
-			axios.get(`${this.store.apiUrl}/api/events/${this.$route.params.id}`).then((response) => {
-				console.log(risultato.data);
-				if (response.data.success) {
-					this.store.events = response.data.payload.id;
-				} else {
-					this.$router.push({ name: "not-found" })
-				}
-			})
-		}
 	}
 }
 
 
-//Prova 1
-/*axios.get(this.store.apiUrl + this.store.events/${id}).then(risultato => {
-	console.log(risultato.data.id);
-	if (risultato.data.success) {
-		this.store.events = risultato.data.payload.id;
-	}
-}).catch(errore => {
-	console.error(errore);
-});*/
-
-
-//Prova 2
-/*axios.get(`${this.store.apiUrl}/events/${id}`)
-	.then(risultato => {
-		console.log(risultato.data.id);
-		if (risultato.data.success) {
-			// Aggiungi i dati dell'evento alla variabile this.store.events
-			this.store.events.push(risultato.data.payload);
-		}
-	})
-	.catch(errore => {
-		console.error(errore);
-	});*/
 </script>
 
 <template>
