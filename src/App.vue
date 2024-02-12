@@ -28,6 +28,9 @@ export default {
 		// });
 	},
 	methods: {
+		//goToAbout() {
+			//this.$router.push({ name: 'about' })
+		//},
 		getEventList() {
 			axios.get(this.store.apiUrl + this.store.apiEvent).then(risultato => {
 				console.log(risultato.data);
@@ -52,6 +55,7 @@ export default {
 
 		</ul>
 		<main>
+				<!--<a class="btn btn-primary" @click="goToAbout">DEBUG ROUTE PUSH</a>-->
 			<router-view></router-view>
 		</main>
 

@@ -30,7 +30,7 @@ export default {
             let url = this.store.apiUrl + this.store.apiEvent + this.id;
             axios.get(url).then(risultato => {
                 console.log("url: " + url);
-                console.log("Risultato: " + risultato.data.payload);
+                console.log("Risultato: " , risultato.data.payload);
                 if (risultato.data.success === true) {
                     this.evento = risultato.data.payload;
                     
@@ -57,6 +57,10 @@ export default {
                         <h6 class="card-subtitle mb-2 text-muted">
                           <strong>Incaricato dell'evento: </strong>{{ evento?.user ? evento?.user.name : "Utente sconosciuto" }} 
                         </h6>
+                        <h6><strong>Tipo evento:</strong></h6>
+                            <ul v-for="tag in evento?.tags">
+                           <li>{{tag.name}} </li>
+                       </ul>
                         <p class="card-text">Restano <b>{{ evento?.available_tickets }}</b> biglietti disponibili.
                         </p>
                     </div>
