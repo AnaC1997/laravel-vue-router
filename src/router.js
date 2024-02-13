@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage.vue';
 import AboutUs from './pages/AboutUs.vue';
 import CategoryService from './pages/CategoryService.vue'; 
 import EventDetail from './pages/EventDetail.vue';
+import TagDetail from './pages/TagDetail.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -28,6 +29,12 @@ const router = createRouter({
             path: '/event/:id',
             name: 'event-detail',
             component: EventDetail,
+            props: true //I dati saranno disponibili come: id Necessita di una props["id"] nel componente
+        },
+        {
+            path: '/tag/:id',
+            name: 'tag-detail',
+            component: TagDetail,
             props: true //I dati saranno disponibili come: id Necessita di una props["id"] nel componente
         }
     ]

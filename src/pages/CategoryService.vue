@@ -45,9 +45,14 @@ export default {
                 <img :src="tag.img " class="card-img-top"  alt="..." style=" height: 15rem;" >
                 <div class="card-body">
                     <h5 class="card-title">{{ tag.name }}</h5>
+                 <router-link :to="{ name: 'tag-detail', params: { id: tag.id } }" class="btn btn-primary">
+                    <font-awesome-icon icon="fa-solid fa-circle-info" class="me-2" />
                     <a href="#" class="btn btn-primary">Vizualiza gli eventi</a>
+                </router-link>
+
                 </div>
             </div>
+         
 
             </div>
            
