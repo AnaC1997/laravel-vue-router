@@ -32,9 +32,9 @@ export default {
             let url = this.store.apiUrl + this.store.apiTag + this.id;
             axios.get(url).then(risultato => {
                 console.log("url: " + url);
-                console.log("Risultato tagDetail", risultato.data.payload.events);
+                console.log("Risultato tagDetail", risultato.data.payload);
                 if (risultato.data.success === true) {
-                    this.event = risultato.data.payload.events;
+                    this.event = risultato.data.payload;
                 }
 
             }).catch(errore => {
@@ -49,14 +49,15 @@ export default {
 
 <template>
     <div class="container">
-        <h1>{{  }}</h1>
         <div class="row">
-            <span v-for="evento in event" class="col-4">
+                <h1 class="text-center" >Tipo di evento: {{ event?.name }}</h1>
+            <span v-for="evento in event?.events" class="col-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title"><strong> {{ evento.name }} </strong></h5>
-                        <p class="card-text">{{ evento.description }}</p>
-                        <p class="card-text"><strong>Data evento</strong> {{ evento.date }}</p>
+                        
+                        <h5 class="card-title"><strong>{{evento?.name}} </strong></h5>
+                        <p class="card-text">{{ evento?.description }}</p>
+                        <p class="card-text"><strong>Data evento</strong> {{ evento?.date }}</p>
                         <div class="card-footer text-center">
                             <router-link :to="{ name: 'event-detail', params: { id: evento.id } }" class="btn btn-primary">
                                 <font-awesome-icon icon="fa-solid fa-circle-info" class="me-2" />
